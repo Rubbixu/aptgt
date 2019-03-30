@@ -1,0 +1,45 @@
+body{
+	style="overflow-x:hidden; overflow-y:hidden;"
+	font-family:sans-serif;
+    padding-top: 50px;
+    height: 100%;
+}
+.navbar-inverse .navbar-form {
+    position: relative;
+}
+
+.btn-group-vertical .btn {
+    text-align: left;
+    border: none;
+}
+.col-lg-9. div-inline {
+    display: inline;
+}
+.navbar-inverse button[type="submit"]{
+    position: absolute;
+    top: 30%;
+    right: 20px;
+    background: none;
+    border: none;
+}
+@media(min-width: 768px) {
+    .navbar-inverse button[type="submit"]{
+        top: 15%;
+    }
+}
+
+.navbar-inverse .glyphicon {
+    color: #999
+}
+.navbar-inverse .navbar-btn {
+    margin-right: 2px;
+    background: none;
+}
+.profile {
+    position: relative;
+    padding-right: 10px
+}
+#contain{
+    padding-top: 30px;
+    padding-left: 80px;
+}

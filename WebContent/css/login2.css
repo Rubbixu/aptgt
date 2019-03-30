@@ -1,0 +1,86 @@
+body{
+    margin:0;
+    padding: 0;
+    background-size:cover;
+    background-position:center;
+    font-family: sans-serif;
+}
+
+.loginbox{
+    width:370px;
+    height:360px;
+    background-color: rgba(170, 168, 168, 0.37);
+    top:63%;
+    left:50%;
+    position:absolute;
+    transform:translate(-50%,-50%);
+    box-sizing: border-box;
+    border-radius:15px;
+    padding: 70px 30px;
+}
+.login_logo{
+    width:340px;
+    height: :340px;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    width:25%; 
+}
+.loginbox p{
+    margin:0;
+    padding:0;
+    color: #fff;
+    font-size: 25px;
+}
+.loginbox input{
+    width:100%;
+    margin-bottom: 20px;
+    
+}
+.loginbox input[type="text"],input[type="password"]{
+    border:none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline:none;
+    height:40px;
+    color: #fff;
+    font-size:16px;
+   
+}
+.loginbox input[type="button"]{
+    
+    border:none;
+    outline: none;
+    height: 40px;
+    background: rgb(74, 157, 240);
+    color: #fff;
+    font-size:18px;
+    border-radius: 15px;
+}
+
+.loginbox input[type="button"]:hover{
+    cursor: pointer;
+    background: #66aff7;
+    color: #fff;
+}
+.loginbox a{
+    text-decoration: none;
+    font-size:14px;
+    color:#fff;
+}
+.loginbox a[name="forget"]{
+    text-align: left;
+    text-decoration: underline;
+}
+.loginbox a[name="register"]{
+    text-align: right;
+    float:right;
+    text-decoration: underline;
+}
+.loginbox a:hover{
+    cursor:pointer;
+    color:#4a9df0;
+}
+::placeholder {
+  color: rgba(216, 215, 215, 0.9);
+}
