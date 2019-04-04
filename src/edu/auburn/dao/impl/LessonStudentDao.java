@@ -32,6 +32,7 @@ public class LessonStudentDao implements ILessonStudentDao {
 			List<LessonStudent> result = new ArrayList<>();
 			IUserDao udao = new UserDao();
 			ILessonDao ldao = new LessonDao();
+			if (ldao.getLessonById(lid)==null) return result;
 			String lname = ldao.getLessonById(lid).getName();
 			if (StringUtils.isNullOrEmpty(lname))
 				lname = "";

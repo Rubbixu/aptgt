@@ -1,0 +1,22 @@
+.visible,
+.hidden {
+  overflow: hidden;
+  /* This container should not have padding, borders, etc. */
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .5s cubic-bezier(0.470, 0.000, 0.745, 0.715);
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.visible > div,
+.hidden > div {
+  /* Put any padding, border, min-height, etc. here. */
+}
+.hidden > div {
+  margin-top: -10000px;
+  transition: margin-top 0s .5s;
+}

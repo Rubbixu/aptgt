@@ -74,6 +74,10 @@ import edu.auburn.utils.StringConfig;
 
 @WebServlet("/teacher")
 public class TeacherServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+
 	private ISemesterService semesterServic = new SemesterService();
 	private IUserService userService = new UserService();
 	private ILessonService lessonService = new LessonService();

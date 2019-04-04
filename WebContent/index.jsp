@@ -37,5 +37,18 @@
 		</div>
 
 	</div>
+<script>
+    window.paceOptions = {
+        ajax: false, // disabled
+        document: false, // disabled
+        eventLag: false, // disabled
+        elements: false,
+        restartOnRequestAfter: true,
+        restartOnPushState: false
+    };</script>
+<script type="text/javascript" src="js/bundle.js"></script>
+<script type="text/javascript" src="js/ay-pages.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/demo-switcher.js"></script>
 </body>
 </html>

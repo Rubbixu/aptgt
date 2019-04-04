@@ -1,165 +1,325 @@
-﻿<%@ page language="java" import="edu.auburn.domain.*"
-	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- jsp header -->
+<%@ page language="java"  import="edu.auburn.domain.*" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<title>Lesson Operations</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
- 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-body {
-	background-image: url("gray.jpg");
-}
-</style>
- 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
- 
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Manage User | Your Site Title Here</title>
+<meta name="description" content="Manage User"/>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom-style.css">
+<link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		 
-		<div class="container-fluid">
-			   <%
-		Lesson l = (Lesson) (request.getAttribute("lesson"));
-	%>
-			<div class="navbar-header">
-				     <a class="navbar-brand"
-					href="${pageContext.request.contextPath }/teacher">ALT</a>     
-			</div>
-			   
-			<button
-				onclick="window.location.href='${pageContext.request.contextPath }/teacher'"
-				class="w3-button w3-blue">Return Main Page</button>
-			<button onclick="window.location.href='#'" class="w3-button w3-pink">Manage
-				Users</button>
+<div class="page-wrapper toggled">
+  <nav id="sidebar" class="sidebar-wrapper sidebar-bg">
+    <a id="show-sidebar" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <div class="sidebar-content">
+      <div class="sidebar-header">
+        <div id="close-sidebar">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="img/teaching/APTlogo.png" alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">ALT
+            <strong>APT-GT</strong>
+          </span>
+          <span class="user-role">Auburn University</span>
+        </div>
 
-			<button
-				onclick="window.location.href='${pageContext.request.contextPath }/teacher?method=details&lid=<%out.print(l.getLid()); %>'"
-				class="w3-button w3-green">Manage Files</button>
-			<button
-				onclick="window.location.href='${pageContext.request.contextPath }/teacher?method=examlist&lid=<% out.print(l.getLid());%>'"
-				class="w3-button w3-yellow">Manage Exams</button>
-			<ul class="nav navbar-nav navbar-right">
-				      
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-						<%
-							if (session == null || session.getAttribute("user") == null) {
-						%> <input type="submit" value="LogIn"> <input
-						type="submit" value="SignUp"> <%
- 	}
- 	if (session.getAttribute("user") != null) {
- 		out.println("hello, " + session.getAttribute("user"));
- %> <%
- 	}
- %> </a></li>   
- <li>
-					<button
-						onclick="window.location.href='${pageContext.request.contextPath }/logout'"
-						class="btn btn-danger navbar-btn">
-						<span class="glyphicon glyphicon-log-out">Logout 
-					</button>
-				</li>   
-			</ul>
-			 
-		</div>
-	</nav>
-	<div class="container">
+      </div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          
+            
+<li>
+    
+        <!--
+            @root === the template scope of the current file object being rendered
+            @root.nav_path === currentFileObject.nav_path
+            ('nav_path' property can be configured by navConfig.pathProperty = 'nav_path')
 
-
-		<h1>
-			<%
-				out.print(l.getName());
-			%>
-		</h1>
-
-		<p>
-			<%
-				out.print(l.getDesc());
-			%>
-		</p>
-		<hr>
-		<div class="wells">
-			<%-- <table class="table table-hover">
-				<thead>
-					<tr>
-						<th>User</th>
-						<th>Role</th>
-						<th>Update to TA</th>
-						<th>Update to Student</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${list }" var="item" varStatus="counter">
-						<tr>
-							<td><c:out value="${item.sname }" /></td>
-							<td><c:out value="${item.role }" /></td>
-							<td><a
-								href="${pageContext.request.contextPath }/teacher?method=update&sid=${item.sid }&lid=${item.lid}"
-								class="w3-button w3-green w3-round-large"> <span
-									class="glyphicon glyphicon-arrow-up"></span>
-							</a></td>
-							<td><a
-								href="${pageContext.request.contextPath }/teacher?method=degrade&sid=${item.sid }&lid=${item.lid}"
-								class="w3-button w3-yellow w3-round-large"> <span
-									class="glyphicon glyphicon-arrow-up"></span>
-							</a></td>
-						</tr>
-					</c:forEach>
-
-				</tbody>
-			</table> --%>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Student name</th>
-					<th>Student email</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${students }" var="item" varStatus="counter">
-					<tr>
-						<td><c:out value="${item.sname }" /></td>
-						<td><c:out value="${item.semail }" /></td>
-						<td><a href="${pageContext.request.contextPath }/teacher?method=delstudentfromlesson&sid=${item.sid}&lid=<%out.print(l.getLid()); %>">X</a></td>
-					</tr>
-				</c:forEach>
-
-			</tbody>
-		</table>
+            path === currentNavNode.path
+            (path property is set to all nav nodes)
+        -->
 		
-		<h4>Add student to this class</h4>
-		<form action="${pageContext.request.contextPath }/teacher?method=searchstudent&lid=<%out.print(l.getLid()); %>" method="post">
-			<input type="text" name="email" placeholder="Enter the email of the user" style="width:300px;">
-			<button type="submit" class="btn btn-default">Search</button> 
-		</form>
-		
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Email</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list }" var="item" varStatus="counter">
-					<tr>
-						<td><c:out value="${item.email }" /></td>
-						<td><a href="${pageContext.request.contextPath }/teacher?method=addstudenttolesson&sid=${item.uid}&lid=<%out.print(l.getLid()); %>"> Add</a></td>
-					</tr>
-				</c:forEach>
+        <a href="${pageContext.request.contextPath }/teacher">
+            <i class="fa fa-home"></i>
+            <span>Homepage</span>
+        </a>
+    
 
-			</tbody>
-		</table>
-		</div>
-	</div>
+</li>
+
+          
+            
+<li>
+    
+        <!--
+            @root === the template scope of the current file object being rendered
+            @root.nav_path === currentFileObject.nav_path
+            ('nav_path' property can be configured by navConfig.pathProperty = 'nav_path')
+
+            path === currentNavNode.path
+            (path property is set to all nav nodes)
+        -->
+
+        <a href="${pageContext.request.contextPath }/teacher?method=lessonlist">
+            <i class="fa fa-book-open"></i>
+            <span>Current Courses</span>
+        </a>
+    
+
+</li>
+
+          
+            
+<li>
+    
+        <!--
+            @root === the template scope of the current file object being rendered
+            @root.nav_path === currentFileObject.nav_path
+            ('nav_path' property can be configured by navConfig.pathProperty = 'nav_path')
+
+            path === currentNavNode.path
+            (path property is set to all nav nodes)
+        -->
+
+        <a href="${pageContext.request.contextPath }/teacher?method=archive">
+            <i class="fa fa-book"></i>
+            <span>Archived Courses</span>
+        </a>
+    
+
+</li>
+
+          
+<%
+			Lesson l = (Lesson) (request.getAttribute("lesson"));
+			int llid = 1;
+			if (l!=null){
+				llid=l.getLid();
+			}
+			
+			%> 
+        <li class="sidebar-dropdown">
+              <a href="#">
+                <i class="fa fa-chalkboard-teacher"></i>
+                <span>Class Management</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="${pageContext.request.contextPath }/teacher?method=examlist&lid=<%out.print(llid); %>"><i class="fa fa-file"></i>
+                      <span>Manage Exam</span></a>
+                  </li>
+                  <li>
+                    <a href="${pageContext.request.contextPath }/teacher?method=details&lid=<%out.print(llid); %>"><i class="fa fa-folder-open"></i>
+                      <span>Manage Files</span></a>
+                  </li>
+                  <li>
+                    <a href="${pageContext.request.contextPath }/teacher?method=managestudent&lid=<% out.print(llid);%>"><i class="fa fa-user"></i>
+                      <span>Manage Users</span></a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="${pageContext.request.contextPath }/logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <!--<i class="fa fa-sign"></i>-->
+                <span>Log Out</span>
+              </a>
+            </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <div>
+
+        <a href="#" class="" id="dropdownMenuNotification" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+          <i class="fab fa-facebook-f"></i>
+
+        </a>
+      </div>
+      <div>
+        <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+      <div>
+        <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div>
+        <a href="#">
+          <i class="fa fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-holder" data-animation="54">
+    
+   <div class="pages ay-spinner2" data-animation="54">
+      <div id="ap-save\UserManage.html" class="page ay-current" data-pos="/jsp\lesson_user.jsp">
+        <section class="color-1 ss-style-doublediagonal" >
+  <h1 class="page-title">User</h1>
+
+</section>
+
+      </div>
+    </div>
+    <footer class="fdb-block footer-small bg-dark">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-8">
+            <ul class="nav justify-content-center justify-content-md-start">
+              <li class="nav-item">
+                <a class="nav-link active" href="https://www.froala.com">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.froala.com">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.froala.com">Terms</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.froala.com">About</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-md-4 mt-4 mt-md-0 text-center text-md-right">
+            Â© 2019 Tian. All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+</div>
+
+<div id="demo-switcher" class="demo-switcher d-none d-sm-block">
+  <a id="styleSwitcherOpen" class="demo-switcher-open" href="#"><i class="fas fa-cog fa-spin"></i></a>
+  <div class="demo-switcher-wrap">
+
+    <h4>Style Switcher</h4>
+
+    <h5>Sidebar Background Color</h5>
+
+    <a href="#" data-theme="chiller" class="theme chiller-theme selected"></a>
+    <a href="#" data-theme="ice" class="theme ice-theme"></a>
+    <a href="#" data-theme="cool" class="theme cool-theme"></a>
+    <a href="#" data-theme="light" class="theme light-theme"></a>
+
+    <h5>Sidebar Background Image</h5>
+    <a href="#" data-bg="1" class="theme theme-bg selected"></a>
+    <a href="#" data-bg="2" class="theme theme-bg"></a>
+    <a href="#" data-bg="3" class="theme theme-bg"></a>
+    <a href="#" data-bg="4" class="theme theme-bg"></a>
+
+    <div class="form-group">
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" id="menu-background">
+        <label class="custom-control-label" for="menu-background">Menu item background</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" checked id="toggle-bg">
+        <label class="custom-control-label" for="toggle-bg">Background image</label>
+      </div>
+    </div>
+    <h4>Page Loader</h4>
+
+    <h5>Transition Animation</h5>
+    <div class="btn-container">
+      <button class="btn btn-outline-secondary btn-sm selected" data-loader="1">1</button>
+      <button class="btn btn-outline-secondary btn-sm" data-loader="2">2</button>
+      <button class="btn btn-outline-secondary btn-sm" data-loader="3">3</button>
+      <button class="btn btn-outline-secondary btn-sm" data-loader="4">4</button>
+      <button class="btn btn-outline-secondary btn-sm" data-loader="5">5</button>
+      <button class="btn btn-outline-secondary btn-sm" data-loader="6">6</button>
+    </div>
+
+    <h5>Preloading style</h5>
+    <div class="btn-container">
+      <button class="btn btn-outline-secondary btn-sm page-loader selected" data-loader="0">0</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader " data-loader="1">1</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="2">2</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="3">3</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="4">4</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="5">5</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="6">6</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="7">7</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="8">8</button>
+      <button class="btn btn-outline-secondary btn-sm page-loader" data-loader="9">9</button>
+    </div>
+    <div class="demo-switcher-buttons options-links">
+      <a href="loading.html" data-ispage="true" class="btn-block">Loading Page</a>
+
+      <a data-toggle="modal" data-target="#cssModal" class="btn-block getCSS"><i class="fas fa-file-alt"></i> Get Skin
+        CSS</a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cssModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Stylesheet for current options</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Generated CSS</label>
+              <textarea class="form-control" id="demoCSS" rows="10">loading...</textarea>
+            </div>
+            <div class="alert alert-info" style="margin-bottom: 0">You need to update custom-style.css with
+              this one to work.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    window.paceOptions = {
+        ajax: false, // disabled
+        document: false, // disabled
+        eventLag: false, // disabled
+        elements: false,
+        restartOnRequestAfter: true,
+        restartOnPushState: false
+    };</script>
+<script type="text/javascript" src="js/bundle.js"></script>
+<script type="text/javascript" src="js/ay-pages.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/demo-switcher.js"></script>
 </body>
 </html>

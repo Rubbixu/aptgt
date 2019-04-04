@@ -1,0 +1,45 @@
+//--------------------Base--------------------//
+$primary-color: #dd550c;
+$white: #FFFFFF;
+$black: #000000;
+$font-color: #444444;
+
+$font-size: 16px;
+$line-height: 1.5;
+$block-padding: 100px;
+
+$headings: (
+        h1: 2.75rem,
+        h2: 2rem,
+        h3: 1.125rem,
+        h4: 1rem,
+        h5: 0.9rem,
+        h6: 0.75rem
+);
+//--------------------Sections--------------------//
+$section-color1: #f0f0f0;
+$section-color2: #fdfdfd;
+$section-color3: #f6f6f6;
+
+$section-gap: 3em;
+
+//--------------------Page-Title--------------------//
+$page-title-height:                     0;
+$page-title-padding:					50px;
+
+$page-title-bg:							#F5F5F5;
+$page-title-bg-dark:					#333;
+
+$page-title-size:						1.6em;
+$page-title-subtitle-size:				18px;
+//--------------------Footer--------------------//
+$page-footer-height:                    54px;
+
+//--------------------Animations--------------------//
+$move-tf-duration:                      .6s;
+$move-tf-fade-duration:                 .7s;
+$move-tf-easing-duration:               .7s;
+$rotate-duration:                       .8s;
+$flip-duration:                         .5s;
+
+$spinner-color: #ddd;

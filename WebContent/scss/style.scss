@@ -1,0 +1,20 @@
+// Modules and Variables
+@import "base/_variables";
+
+@import "partials/_base";
+@import "partials/_style";
+@import "partials/_blocks";
+
+// Partials
+@import "partials/_separators";
+@import "partials/_sidebar";
+@import "partials/_pagetitle";
+@import "partials/_studentcards";
+@import "partials/_timeline";
+@import "partials/_animations";
+
+// Plugins
+@import "plugins/_simplebar";
+@import "plugins/_slick";
+@import "plugins/_pace";
+@import "plugins/_magic";

@@ -23,6 +23,11 @@ import nl.captcha.Captcha;
 
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+
+	
 	IUserService userService = new UserService();
 
 	@Override

@@ -88,6 +88,7 @@ public class ExamDao implements IExamDao {
 			List<Exam> result = new ArrayList<>();
 			ILessonDao ldao = new LessonDao();
 			IUserDao udao = new UserDao();
+			if (ldao.getLessonById(lid)==null) return result;
 			String lname = ldao.getLessonById(lid).getName();
 			if (StringUtils.isNullOrEmpty(lname))
 				lname = "";

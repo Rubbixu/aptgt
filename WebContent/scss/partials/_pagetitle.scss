@@ -1,0 +1,52 @@
+/* ---------------------------------------------------------------/
+/	Page Title                                                    /
+/----------------------------------------------------------------*/
+#page-title {
+  height: 100px;
+  position: relative;
+  background-color: $page-title-bg;
+  border-bottom: 1px solid #EEE;
+
+  .title-container {
+    padding: 0 10%;
+    display:flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  h1 {
+    border-bottom: 5px solid #111111;
+    display: inline-block;
+    padding-bottom: 20px;
+    margin: 0;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #333;
+    font-size: $page-title-size;
+    text-transform: uppercase;
+  }
+
+  span {
+    display: block;
+    margin-top: 10px;
+    font-weight: 300;
+    color: #777;
+    font-size: $page-title-subtitle-size;
+  }
+
+
+  .breadcrumb {
+    margin-left: auto;
+    background-color: transparent !important;
+    font-size: 12px;
+
+    a { color: #555;
+      &:hover { color: white; }
+    }
+    i { width: auto !important; }
+  }
+
+}

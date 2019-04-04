@@ -1,0 +1,32 @@
+in UserServlet.java
+add line22:
+import nl.captcha.Captcha;
+login method:
+move: 
+HttpSession session = req.getSession(); to line 121
+out of conditional statement from line 124
+add line 121:
+String ccode = req.getParameter("captchacode");
+Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME); 
+change line 124:
+if ((result)&&(captcha.isCorrect(ccode))) {
+
+in index.jsp:
+add line 2:
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+add line 27:
+<img id="captcha" src="<c:url value="simpleCaptcha.jpg" />" width="150">
+<input type="text" name="captchacode" />
+
+in dir: WebContent/WEB-INF/lib:
+add imaging.jar and simplecaptcha-1.1.1.jar
+
+in web.xml, at line 3, add:
+  	<servlet>
+		<servlet-name>SimpleCaptcha</servlet-name>
+		<servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SimpleCaptcha</servlet-name>
+		<url-pattern>/simpleCaptcha.jpg</url-pattern>
+	</servlet-mapping>
