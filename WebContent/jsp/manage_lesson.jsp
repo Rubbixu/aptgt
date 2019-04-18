@@ -13,12 +13,14 @@
 <title>Current Courses | Your Site Title Here</title>
 <meta name="description" content="Current Courses"/>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/page-animations.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/custom-style.css">
 <link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/simplebar.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+<link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
 <div class="page-wrapper toggled">
@@ -121,7 +123,8 @@
                 <i class="fa fa-chalkboard-teacher"></i>
                 <span>Class Management</span>
               </a>
-              <div class="sidebar-submenu">
+              <div>
+<!--               <div class="sidebar-submenu"> -->
                 <ul>
                   <li>
                     <a href="${pageContext.request.contextPath }/teacher?method=examlist&lid=<%out.print(llid); %>"><i class="fa fa-file"></i>
@@ -191,35 +194,82 @@
         <div class="col-sm-12 col-md-12">
             <h1 class="page-title">Current Courses</h1>
             <div class="container-fluid" style="display: block;">
-			<div class="container">
-
-		<a style="color:blue" href="${pageContext.request.contextPath }/teacher?method=lessonlist">Order by created time</a>&emsp;<a style="color:blue" href="${pageContext.request.contextPath }/teacher?method=lessonlist&orderby=1">Order by alphabetical</a>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Course</th>
-					<th>Level</th>
-					<th>Teacher</th>
-					<th>Action</th>
-					<th>Edit</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list }" var="item" varStatus="counter">
-					<tr>
-						<td><a href="${pageContext.request.contextPath }/teacher?method=details&lid=${item.lid }"><c:out
-									value="${item.name }" /></a></td>
-						<td>${item.type }</td>
-						<td>${item.uname }</td>
-						<td><a href="${pageContext.request.contextPath }/teacher?method=delete&lid=${item.lid }">x</a></td>
-						<td><a href="${pageContext.request.contextPath }/teacher?method=editlesson&lid=${item.lid }"><u>Edit</u></a></td>
-					</tr>
-
-				</c:forEach>
-			</tbody>
-		</table>
+			<c:forEach items="${list }" var="item" varStatus="counter">
+              <div class="row mb-3">
+                    <div class="col-md-2 mb-3">
+                        <a href="#"><img src="img/teaching/course-01.jpg" class="col-12"></a>
+                    </div>
+                    <div class="col-md-10">
+                        <h5>
+                            <a href="${pageContext.request.contextPath }/teacher?method=details&lid=${item.lid }">
+                            <c:out value="${item.name }" /></a>
+                        </h5>
+                        
+                        <div class="dl-horizontal text-left tight m-bottom-30">
+                            <p><c:out value="${item.desc }" /></p>
+                        </div>
+                        <div><a href="${pageContext.request.contextPath }/teacher?method=delete&lid=${item.lid }">x</a></td></div>
+						<div><a href="${pageContext.request.contextPath }/teacher?method=editlesson&lid=${item.lid }"><u>Edit</u></a></div>
+                    </div>
+                </div>
+               </c:forEach>
                 
-</div>
+
+<%-- 		<a style="color:blue" href="${pageContext.request.contextPath }/teacher?method=lessonlist">Order by created time</a>&emsp;<a style="color:blue" href="${pageContext.request.contextPath }/teacher?method=lessonlist&orderby=1">Order by alphabetical</a> --%>
+<!-- 		<table class="table table-hover"> -->
+<!-- 			<thead> -->
+<!-- 				<tr> -->
+<!-- 					<th>Course</th> -->
+<!-- 					<th>Level</th> -->
+<!-- 					<th>Teacher</th> -->
+<!-- 					<th>Action</th> -->
+<!-- 					<th>Edit</th> -->
+<!-- 				</tr> -->
+<!-- 			</thead> -->
+<!-- 			<tbody> -->
+<%-- 				<c:forEach items="${list }" var="item" varStatus="counter"> --%>
+<!-- 					<tr> -->
+<%-- 						<td><a href="${pageContext.request.contextPath }/teacher?method=details&lid=${item.lid }"><c:out --%>
+<%-- 									value="${item.name }" /></a></td> --%>
+<%-- 						<td>${item.type }</td> --%>
+<%-- 						<td>${item.uname }</td> --%>
+<%-- 						<td><a href="${pageContext.request.contextPath }/teacher?method=delete&lid=${item.lid }">x</a></td> --%>
+<%-- 						<td><a href="${pageContext.request.contextPath }/teacher?method=editlesson&lid=${item.lid }"><u>Edit</u></a></td> --%>
+<!-- 					</tr> -->
+
+<%-- 				</c:forEach> --%>
+<!-- 			</tbody> -->
+<!-- 		</table> -->
+                
+			  <div class="add-course">
+                    <button class="fas fa-plus" id="add-course" onclick="openCreate()"> Add Course </button>
+                    <div class="form-create" id="crcour">
+                        <form action="${pageContext.request.contextPath }/teacher?method=add"
+							method="post" class="form-container">
+                            <h1>Create Course</h1>
+                            <label for="level">Level:</label>
+                            <select id="level" name="ltype">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select><br><br>
+                            <label for="coursename">Course Name:</label> <input type="text" placeholder="Enter Course Name" name="lname" required><br><br>
+                            <label for="coursedesc">Course Description:</label> <input type="text" placeholder="Enter Course Description" name="ldesc" required><br><br><br>
+                            <button type="submit" class="create">Create</button>
+                            <button type="button" class="cancel" onclick="closeCreate()">Close</button>
+                        </form>
+                    </div>
+                </div>
+                <script>
+                    function openCreate() {
+                        document.getElementById("crcour").style.display = "block";
+                    }
+                    function closeCreate() {
+                        document.getElementById("crcour").style.display = "none";
+                    }
+                </script>
+			
             </div>
         </div>
     </div>
@@ -357,8 +407,8 @@
         restartOnPushState: false
     };</script>
 <script type="text/javascript" src="js/bundle.js"></script>
-<script type="text/javascript" src="js/ay-pages.js"></script>
+<!-- <script type="text/javascript" src="js/ay-pages.js"></script> -->
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/demo-switcher.js"></script>
+<!-- <script type="text/javascript" src="js/demo-switcher.js"></script> -->
 </body>
 </html>

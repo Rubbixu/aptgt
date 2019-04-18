@@ -1230,7 +1230,7 @@ section + section.ss-style-roundedsplit {
           align-items: center;
       -ms-flex-direction: column;
           flex-direction: column; }
-      .student-card-1 .social-icons .icon a {
+      /*.student-card-1 .social-icons .icon a {
         color: #fff;
         padding: 0.5em;
         font-size: 1.25em;
@@ -1256,7 +1256,7 @@ section + section.ss-style-roundedsplit {
         margin-bottom: .2em; }
       .student-card-1 .social-icons .icon p {
         color: #666B7D;
-        font-size: 12px; }
+        font-size: 12px; }*/
 
 .timeline {
   position: relative;

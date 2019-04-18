@@ -12,12 +12,14 @@
 <title>Manage User | Your Site Title Here</title>
 <meta name="description" content="Manage User"/>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/page-animations.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/custom-style.css">
 <link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/simplebar.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+<link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
 <div class="page-wrapper toggled">
@@ -121,7 +123,8 @@
                 <i class="fa fa-chalkboard-teacher"></i>
                 <span>Class Management</span>
               </a>
-              <div class="sidebar-submenu">
+              <div>
+<!--               <div class="sidebar-submenu"> -->
                 <ul>
                   <li>
                     <a href="${pageContext.request.contextPath }/teacher?method=examlist&lid=<%out.print(llid); %>"><i class="fa fa-file"></i>
@@ -318,8 +321,8 @@
         restartOnPushState: false
     };</script>
 <script type="text/javascript" src="js/bundle.js"></script>
-<script type="text/javascript" src="js/ay-pages.js"></script>
+<!-- <script type="text/javascript" src="js/ay-pages.js"></script> -->
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/demo-switcher.js"></script>
+<!-- <script type="text/javascript" src="js/demo-switcher.js"></script> -->
 </body>
 </html>

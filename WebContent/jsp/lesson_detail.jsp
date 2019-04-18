@@ -12,13 +12,15 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Current Courses | Your Site Title Here</title>
 <meta name="description" content="Current Courses"/>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/page-animations.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/custom-style.css">
-<link rel="stylesheet" href="css/demo-switcher.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom-style.css">
+<link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/simplebar.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
 <div class="page-wrapper toggled">
@@ -121,7 +123,8 @@
                 <i class="fa fa-chalkboard-teacher"></i>
                 <span>Class Management</span>
               </a>
-              <div class="sidebar-submenu">
+              <div>
+<!--               <div class="sidebar-submenu"> -->
                 <ul>
                   <li>
                     <a href="${pageContext.request.contextPath }/teacher?method=examlist&lid=<%out.print(llid); %>"><i class="fa fa-file"></i>
@@ -184,49 +187,34 @@
         
 
 <section class="color-2 ss-style-doublediagonal">
+	<form name="l_file"	
+	action="${pageContext.request.contextPath }/teacher?method=upload&lid=<% out.print(l.getLid());%>"
+	method="post" enctype="multipart/form-data">
     <div class="row justify-content-center">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
-            <h1 class="page-title">Course Files</h1>
+            <h1 class="page-title"><%out.println(l.getName()); %></h1>
+            <h2 class="page-item">Course Files</h2><br><br>
+            
             <div class="row justify-content-center">
-                <div class="col-md-2">
-                    <h3>Filter by type:</h3>
-                </div>
-
-                <div class="col-md-8"><input  class="form-control" type="text" id="searchInput" placeholder="Search for names.." title="Type in a name">
-                    <div class="cd-dropdown">
-                        <span style="z-index: 1005;">All types</span>
-                        <input type="hidden" name="cd-dropdown" value="all">
-                        <ul style="height: auto;">
-                            <li data-value="all" style="z-index: 1004; top: 0px; left: 0px; margin-left: 0px; opacity: 1; transform: none; transition: all 300ms ease;">
-                                <span class="filter">All types</span>
-                            </li>
-                            <li data-value="jpaper" style="z-index: 1003; top: 0px; left: 0px; margin-left: 0px; opacity: 1; transform: none; transition: all 300ms ease;">
-                                <span class="filter">Jounal Papers</span>
-                            </li>
-                            <li data-value="cpaper" style="z-index: 1002; top: 3px; left: 0px; margin-left: 0px; opacity: 1; transform: none; transition: all 300ms ease;">
-                                <span class="filter">Journals</span>
-                            </li>
-                            <li data-value="bookchapter" style="z-index: 1001; top: 6px; left: 2px; margin-left: 0px; opacity: 1; transform: none; width: 517px; transition: all 300ms ease;">
-                                <span class="filter">Book Chapters</span>
-                            </li>
-                            <li data-value="book" style="z-index: 1000; top: 9px; left: 4px; margin-left: 0px; opacity: 1; transform: none; width: 513px; transition: all 300ms ease;">
-                                <span class="filter">Books</span>
-                            </li>
-                        </ul>
+                <div class="file-upload">
+                    <div class="fupload">
+                    	
+                        <label for="fileup">File Description:</label>&nbsp&nbsp&nbsp
+                        <input type="text" placeholder="Enter File Desc" name="fdesc" required>
+                        <input type="file" name="filename" id="fileToUpload"><br><br>
+                        <input id="add-button" type="submit" value="Add File" name="submit">
+                        
                     </div>
                 </div>
-
-                <div class="col-md-2" id="sort">
-                    <span>Sort by year:</span>
-                    <div class="btn-group pull-right">
-                        <button type="button" data-sort="data-year" data-order="desc" class="sort btn btn-default"><i class="icon-sort-by-order"></i></button>
-                        <button type="button" data-sort="data-year" data-order="asc" class="sort btn btn-default"><i class="icon-sort-by-order-alt"></i></button>
-                    </div>
-                </div>
+                
             </div>
+            
         </div>
     </div>
+   </form>
 </section>
+
+                
 
 
 
@@ -234,32 +222,23 @@
   <div class="row">
     <div class="col-md-12">
       <div class="pitems">
-        <div class="item mix cpaper mix_all" data-year="2018" style="display: block;  opacity: 1;">
-        <div class="pubmain">
-          <a href="http://www.eng.auburn.edu/~sealscd/documents/Dr_Seals_CV.doc">
-              <i class="fas fa-download"></i><h4 class="pubtitle">  File name: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lut enim ad m</h4>
-                <div class="pubauthor"><strong>Teacher Name</strong> Teacher name</div>
-              <div class="pubcite"><span class="badge badge-warning">File type</span> Â file dateÂ 2018/12/12</div></a>
-        </div>
-        </div>
+        <c:forEach items="${list }" var="item" varStatus="counter">
 
         <div class="item mix cpaper mix_all" data-year="2018" style="display: block;  opacity: 1;">
           <div class="pubmain">
-              <a href="http://www.eng.auburn.edu/~sealscd/documents/Dr_Seals_CV.doc">
-                  <i class="fas fa-download"></i><h4 class="pubtitle">  File name: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lut enim ad m</h4>
-                  <div class="pubauthor"><strong>Teacher Name</strong> Teacher name</div>
-                  <div class="pubcite"><span class="badge badge-warning">File type</span> Â file dateÂ 2018/12/12</div></a>
+                  <i class="fas fa-download"></i><h4 class="pubtitle">  
+					<c:url var="url" value="/teacher">
+					<c:param name="method" value="teacher_download"></c:param>
+					<c:param name="fid" value="${item.fid }"></c:param>
+							</c:url> <a href="${url }">${item.name }</a>
+				</h4>
+                  <div class="pubauthor"><a
+				href="${pageContext.request.contextPath }/teacher?method=deletef&fid=${item.fid }&lid=<% out.print(l.getLid());%>">
+				<strong>DELETE</strong></a></div>
+                  <div class="pubcite"><span class="badge badge-warning"></span></div>
           </div>
         </div>
-
-        <div class="item mix cpaper mix_all" data-year="2018" style="display: block;  opacity: 1;">
-          <div class="pubmain">
-              <a href="http://www.eng.auburn.edu/~sealscd/documents/Dr_Seals_CV.doc">
-                  <i class="fas fa-download"></i><h4 class="pubtitle">  File name: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lut enim ad m</h4>
-                  <div class="pubauthor"><strong>Teacher Name</strong> Teacher name</div>
-                  <div class="pubcite"><span class="badge badge-warning">File type</span> Â file dateÂ 2018/12/12</div></a>
-          </div>
-        </div>
+        </c:forEach>
 
       </div>
     </div>
@@ -398,8 +377,8 @@
         restartOnPushState: false
     };</script>
 <script type="text/javascript" src="js/bundle.js"></script>
-<script type="text/javascript" src="js/ay-pages.js"></script>
+<!-- <script type="text/javascript" src="js/ay-pages.js"></script> -->
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/demo-switcher.js"></script>
+<!-- <script type="text/javascript" src="js/demo-switcher.js"></script> -->
 </body>
 </html>

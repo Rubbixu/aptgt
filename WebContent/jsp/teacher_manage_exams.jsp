@@ -10,14 +10,15 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Manage Exam | Your Site Title Here</title>
-<meta name="description" content="Manage Exam"/>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/page-animations.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/custom-style.css">
 <link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/simplebar.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+<link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
 <div class="page-wrapper toggled">
@@ -121,7 +122,8 @@
                 <i class="fa fa-chalkboard-teacher"></i>
                 <span>Class Management</span>
               </a>
-              <div class="sidebar-submenu">
+              <div>
+<!--               <div class="sidebar-submenu"> -->
                 <ul>
                   <li>
                     <a href="${pageContext.request.contextPath }/teacher?method=examlist&lid=<%out.print(llid); %>"><i class="fa fa-file"></i>
@@ -184,8 +186,76 @@
         <section class="color-1 ss-style-doublediagonal" >
   <div class="row">
     <div class="col-sm-12 col-md-12">
-      <h1 class="page-title">Exams</h1>
-
+      <h1 class="page-title"><%out.println(l.getName()); %></h1>
+      <h2 class="page-item">Exams</h2>
+    </div>
+  </div>
+</section>
+<section class="color-11 ss-style-doublediagonal" >
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="container-fluid">
+            <div class="headings">
+              <a>Exam</a>
+              <a>Practice?</a>
+              <a>Due Date</a>
+              <a>Created by</a>
+              <a>Delete</a>
+              <a>Result</a>
+              <a>Edit</a>
+            </div><br><br>
+            
+            <div class="listallco">
+              <div class="allcourse">
+              <c:forEach items="${list }" var="item" varStatus="counter">
+                <div id="view1">
+                  <a href="${pageContext.request.contextPath }/teacher?method=examdetails&lid=<%out.print(l.getLid()); %>&eid=${item.eid}"><c:out
+									value="${item.name }" /></a>
+                  <a>${item.ifPractice}</a>
+                  <a>${item.edue }</a>
+                  <a>${item.uname }</a>
+                  <a href="${pageContext.request.contextPath }/teacher?method=delexam&lid=<%out.print(l.getLid()); %>&eid=${item.eid}">x</a>
+                  <a href="${pageContext.request.contextPath }/teacher?method=checke&lid=<%out.print(l.getLid()); %>&eid=${item.eid}">check</a>
+                  <a href="${pageContext.request.contextPath }/teacher?method=edite&lid=<%out.print(l.getLid()); %>&eid=${item.eid}">edit</a>
+                </div><br>
+              </c:forEach>
+              </div>
+            </div><br><br><br><br>
+          <div class="add-test">
+            <button class="fas fa-plus" id="add-test" onclick="openTest()"> Add Exam </button>
+            <div class="form-create" id="crexam">
+              <form action="${pageContext.request.contextPath }/teacher?method=addexam&lid=<%out.print(l.getLid()); %>"
+				method="post" class="form-container">
+                <h1>Create Test</h1><br>
+                <lable for="e-type">Exam Type:</lable>
+                <select id="e-type" name="isprac">
+                  <option value="0">Practice</option>
+                  <option value="1">Exam</option>
+                </select><br><br>
+                <label for="k-type">Keyboard:</label>
+                <select id="k-type" name="etype">
+                  <option value="0">Basic</option>
+                  <option value="1">Intermediate</option>
+                  <option value="2">Advance</option>
+                </select><br><br>
+                <label for="ddate">Due Date: </label>
+                <input type="datetime-local" name="edue" value="2019-05-05T00:00"><br><br>
+                <label for="examname">Test Name:</label> <input type="text" placeholder="Enter Exam Name" name="ename" required><br><br>
+                <label for="examdesc">Test Description:</label> <input type="text" placeholder="Enter Exam Description" name="edesc" required><br><br><br>
+                <button type="submit" class="create">Create</button>
+                <button type="button" class="cancel" onclick="closeTest()">Close</button>
+              </form>
+            </div>
+          </div>
+          <script>
+            function openTest() {
+              document.getElementById("crexam").style.display = "block";
+            }
+            function closeTest() {
+              document.getElementById("crexam").style.display = "none";
+            }
+          </script>
+        </div>
     </div>
   </div>
 </section>
@@ -322,8 +392,8 @@
         restartOnPushState: false
     };</script>
 <script type="text/javascript" src="js/bundle.js"></script>
-<script type="text/javascript" src="js/ay-pages.js"></script>
+<!-- <script type="text/javascript" src="js/ay-pages.js"></script> -->
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/demo-switcher.js"></script>
+<!-- <script type="text/javascript" src="js/demo-switcher.js"></script> -->
 </body>
 </html>

@@ -13,12 +13,14 @@
 <title>Archived Courses | Your Site Title Here</title>
 <meta name="description" content="Archived Courses"/>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/page-animations.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/custom-style.css">
 <link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/simplebar.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+<link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
 <div class="page-wrapper toggled">
@@ -120,7 +122,8 @@
                 <i class="fa fa-chalkboard-teacher"></i>
                 <span>Class Management</span>
               </a>
-              <div class="sidebar-submenu">
+              <div>
+<!--               <div class="sidebar-submenu"> -->
                 <ul>
                   <li>
                     <a href="${pageContext.request.contextPath }/teacher?method=examlist&lid=<%out.print(llid); %>"><i class="fa fa-file"></i>
@@ -187,43 +190,19 @@
                 <div class="section-title text-left">
                     <h3>Archived Courses</h3>
                 </div>
+                <form action="${pageContext.request.contextPath }/teacher?method=searchclass" 
+                method="post">
                 <div class="row justify-content-center">
-                    <div class="col-md-2">
-                        <h3>Filter by type:</h3>
+                    <div class="csearch">
+                        <label for="courseyear">Search By Year:</label> <input type="text" placeholder="Enter Year in YYYY" name="courseyear" required><br><br>
                     </div>
+                    <button type="submit" class="search">Search</button>
+               
 
-                    <div class="col-md-8"><input  class="form-control" type="text" id="searchInput" placeholder="Search for names.." title="Type in a name">
-                        <div class="cd-dropdown">
-                            <span style="z-index: 1005;">All types</span>
-                            <input type="hidden" name="cd-dropdown" value="all">
-                            <ul style="height: auto;">
-                                <li data-value="all" style="z-index: 1004; top: 0px; left: 0px; margin-left: 0px; opacity: 1; transform: none; transition: all 300ms ease;">
-                                    <span class="filter">All types</span>
-                                </li>
-                                <li data-value="jpaper" style="z-index: 1003; top: 0px; left: 0px; margin-left: 0px; opacity: 1; transform: none; transition: all 300ms ease;">
-                                    <span class="filter">Jounal Papers</span>
-                                </li>
-                                <li data-value="cpaper" style="z-index: 1002; top: 3px; left: 0px; margin-left: 0px; opacity: 1; transform: none; transition: all 300ms ease;">
-                                    <span class="filter">Journals</span>
-                                </li>
-                                <li data-value="bookchapter" style="z-index: 1001; top: 6px; left: 2px; margin-left: 0px; opacity: 1; transform: none; width: 517px; transition: all 300ms ease;">
-                                    <span class="filter">Book Chapters</span>
-                                </li>
-                                <li data-value="book" style="z-index: 1000; top: 9px; left: 4px; margin-left: 0px; opacity: 1; transform: none; width: 513px; transition: all 300ms ease;">
-                                    <span class="filter">Books</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
 
-                    <div class="col-md-2" id="sort">
-                        <span>Sort by year:</span>
-                        <div class="btn-group pull-right">
-                            <button type="button" data-sort="data-year" data-order="desc" class="sort btn btn-default"><i class="icon-sort-by-order"></i></button>
-                            <button type="button" data-sort="data-year" data-order="asc" class="sort btn btn-default"><i class="icon-sort-by-order-alt"></i></button>
-                        </div>
-                    </div>
                 </div>
+                 </form>
             </div>
         </div>
     </div>
@@ -235,101 +214,6 @@
                 <div class="section-title text-left">
                 <div class="container-fluid" style="display: block;">
                     <div class="student-slider"  >
-                        <div class="student-card-1 card m-2">
-                            <div class="card-img-block">
-                                <img class="card-img-top" src="img/teaching/APTlogo.png" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <div class="profile text-center">
-                                    UI design
-                                </div>
-                                <div class="social-icons">
-                                    <div class="icon">
-                                        <a href="/"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="student-card-1 card m-2">
-                            <div class="card-img-block">
-                                <img class="card-img-top" src="img/teaching/APTlogo.png" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <div class="profile text-center">
-                                    UI design
-                                </div>
-                                <div class="social-icons">
-                                    <div class="icon">
-                                        <a href="/"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="student-card-1 card m-2">
-                            <div class="card-img-block">
-                                <img class="card-img-top" src="img/teaching/APTlogo.png" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <div class="profile text-center">
-                                    UI design
-                                </div>
-                                <div class="social-icons">
-                                    <div class="icon">
-                                        <a href="/"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="student-card-1 card m-2">
-                            <div class="card-img-block">
-                                <img class="card-img-top" src="img/teaching/APTlogo.png" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <div class="profile text-center">
-                                    UI design
-                                </div>
-                                <div class="social-icons">
-                                    <div class="icon">
-                                        <a href="/"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="student-card-1 card m-2">
-                            <div class="card-img-block">
-                                <img class="card-img-top" src="img/teaching/APTlogo.png" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <div class="profile text-center">
-                                    UI design
-                                </div>
-                                <div class="social-icons">
-                                    <div class="icon">
-                                        <a href="/"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="student-card-1 card m-2">
-                            <div class="card-img-block">
-                                <img class="card-img-top" src="img/teaching/APTlogo.png" alt="Card image cap">
-                            </div>
-                            <div class="card-body">
-                                <div class="profile text-center">
-                                    UI design
-                                </div>
-                                <div class="social-icons">
-                                    <div class="icon">
-                                        <a href="/"><i class="fas fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="student-card-1 card m-2">
                             <div class="card-img-block">
@@ -347,9 +231,10 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
-            </div>
-
+            	</div>
+			</div>
         </div>
     </div>
 </section>
@@ -463,7 +348,7 @@
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Generated CSS</label>
-              <textarea class="form-control" id="demoCSS" rows="10">loading...</textarea>
+              <textarea class="form-control" id="demoCSS" r                                                                                                                                                                                                                                                                                                                                                                                                 ows="10">loading...</textarea>
             </div>
             <div class="alert alert-info" style="margin-bottom: 0">You need to update custom-style.css with
               this one to work.
@@ -487,8 +372,8 @@
         restartOnPushState: false
     };</script>
 <script type="text/javascript" src="js/bundle.js"></script>
-<script type="text/javascript" src="js/ay-pages.js"></script>
+<!-- <script type="text/javascript" src="js/ay-pages.js"></script> -->
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/demo-switcher.js"></script>
+<!-- <script type="text/javascript" src="js/demo-switcher.js"></script> -->
 </body>
 </html>

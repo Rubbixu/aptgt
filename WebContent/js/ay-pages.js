@@ -127,12 +127,6 @@ Pages.prototype.attach = function(element) {
       var link = this.href;
       var info = new Location(link);
       console.log("info", info);
-      
-      /* Not use loader when logging out */
-      if(info.pathname.match(/.*?\/logout/)!==null){
-          return true;
-      }
-      /* */
       if(!self.isTrigger(info)) {
           e.preventDefault();
           return true;
