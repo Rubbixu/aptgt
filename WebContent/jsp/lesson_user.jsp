@@ -36,7 +36,7 @@
           <img class="img-responsive img-rounded" src="img/teaching/APTlogo.png" alt="User picture">
         </div>
         <div class="user-info">
-          <span class="user-name">ALT
+          <span class="user-name">
             <strong>APT-GT</strong>
           </span>
           <span class="user-role">Auburn University</span>
@@ -185,7 +185,68 @@
    <div class="pages ay-spinner2" data-animation="54">
       <div id="ap-save\UserManage.html" class="page ay-current" data-pos="/jsp\lesson_user.jsp">
         <section class="color-1 ss-style-doublediagonal" >
-  <h1 class="page-title">User</h1>
+    		<div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h1 class="page-title"><%out.println(l.getName()); %></h1>
+                    <h2 class="page-item">People</h2>
+                </div>
+            </div>
+        </section>
+
+<section class="color-11 ss-style-doublediagonal" >
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+        <form action="${pageContext.request.contextPath }/teacher?method=searchstudent&lid=<%out.print(l.getLid()); %>" method="post">
+            <div class="row justify-content-center">
+                <div class="csearch">
+                    <label for="courseyear">Search Student:</label> 
+                    <input type="text" placeholder="Enter Student's Email" name="email" required><br><br>
+                </div>
+                <button type="submit" class="search">Search</button><br><br><br><br><br><br>
+            </div>
+            </form>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${list }" var="item" varStatus="counter">
+					<tr>
+						<td><c:out value="${item.email }" /></td>
+						<td><a href="${pageContext.request.contextPath }/teacher?method=addstudenttolesson&sid=${item.uid}&lid=<%out.print(l.getLid()); %>"> Add</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table><br><br><br><br><br>
+		            <div class="filest-upload">
+                <div class="fstupload">
+                    <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+                    <input id="add-button1" type="submit" value="Add" name="submit">
+                </div>
+            </div><br><br><br><br><br>
+            <div class="container-fluid">
+                <div class="headingstu">
+                    <a>Student Name</a>
+                    <a>Email</a>
+                    <a>Delete</a>
+                </div><br><br>
+                <div class="listallstu">
+                    <div class="allstu">
+                    <c:forEach items="${students }" var="item" varStatus="counter">
+                        <div id="viewst1">
+                            <a><c:out value="${item.sname }" /></a>
+                            <a><c:out value="${item.semail }" /></a>
+                            <a href="${pageContext.request.contextPath }/teacher?method=delstudentfromlesson&sid=${item.sid}&lid=<%out.print(l.getLid()); %>">Delete</a>
+                        </div><br>
+                    </c:forEach>
+                        
+                    </div>
+                </div><br><br><br><br>
+        </div>
+    </div>
 
 </section>
 

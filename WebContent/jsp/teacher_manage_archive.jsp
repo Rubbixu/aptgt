@@ -37,7 +37,7 @@
           <img class="img-responsive img-rounded" src="img/teaching/APTlogo.png" alt="User picture">
         </div>
         <div class="user-info">
-          <span class="user-name">ALT
+          <span class="user-name">
             <strong>APT-GT</strong>
           </span>
           <span class="user-role">Auburn University</span>
@@ -60,7 +60,7 @@
             (path property is set to all nav nodes)
         -->
 
-        <a href="${pageContext.request.contextPath }/teacher">
+        <a href="${pageContext.request.contextPath}/teacher">
             <i class="fa fa-home"></i>
             <span>Homepage</span>
         </a>
@@ -197,12 +197,41 @@
                         <label for="courseyear">Search By Year:</label> <input type="text" placeholder="Enter Year in YYYY" name="courseyear" required><br><br>
                     </div>
                     <button type="submit" class="search">Search</button>
+                    <label> <input type="radio"
+				name="semester" id="spring" value="1" checked> Spring
+			</label> <label> <input type="radio" name="semester" id="summer"
+				value="2"> Summer
+			</label> <label> <input type="radio" name="semester" id="fall"
+				value="3"> Fall
+			</label>
                
 
                     
 
                 </div>
                  </form>
+                 
+                 		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Class ID</th>
+					<th>ClassName</th>
+					<th>Create date</th>
+					<th>Creator</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${classes }" var="item" varStatus="counter">
+					<tr>
+						<td><c:out value="${item.lid }" /></td>
+						<td><a href="${pageContext.request.contextPath }/teacher?method=details&lid=${item.lid }"><c:out value="${item.name }" /></a></td>
+						<td><c:out value="${item.date }" /></td>
+						<td><c:out value="${item.uname }" /></td>
+					</tr>
+				</c:forEach>
+
+			</tbody>
+		</table>
             </div>
         </div>
     </div>

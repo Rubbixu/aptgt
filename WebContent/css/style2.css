@@ -185,3 +185,77 @@
     color: #707070;
     width: 150px;
 }
+
+
+/*manage user*/
+
+.headingstu a{
+    font-size:18px;
+    float:left;
+    display: inline;
+    width: 250px;
+    border-bottom: 1px solid black;
+}
+
+
+#viewst1{
+    margin-left: 0%;
+    font-size:18px;
+    float:left;
+    display: block;
+    text-decoration: none;
+}
+
+#viewst2{
+    font-size:18px;
+    float:left;
+    display: block;
+    text-decoration: none;
+}
+#viewst3{
+    font-size:18px;
+    float:left;
+    display: block;
+    text-decoration: none;
+}
+
+#viewst1 a{
+    float: left;
+    display: block;
+    text-decoration: none;
+    color: #707070;
+    width:250px;
+}
+#viewst2 a{
+    float: left;
+    display: block;
+    text-decoration: none;
+    color: #707070;
+    width: 250px;
+}
+#viewst3 a{
+    float: left;
+    display: block;
+    text-decoration: none;
+    color: #707070;
+    width: 250px;
+}
+
+#add-button1{
+    background-image: linear-gradient(to top left, #000 0%, #adb5bd 50%, #adb5bd 50%, #adb5bd 66%);
+    color: black;
+    padding: 6px 12px;
+    border: 1px solid #adb5bd;
+    cursor: pointer;
+    width: 14%;
+    height: 0%;
+    opacity: 1;
+    float: left;
+    margin-left: 10%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 10px;
+}
+
+.fstupload{
+    margin-left: 30%;
+}
