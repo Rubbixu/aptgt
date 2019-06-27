@@ -1,23 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
+<meta name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Lessons | Your Site Title Here</title>
-  <meta name="description" content="Lessons"/>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/page-animations.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/custom-style.css">
-  <link rel="stylesheet" href="css/demo-switcher.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-  <link rel="stylesheet" href="css/style2.css">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Exams | Your Site Title Here</title>
+<meta name="description" content="Exams"/>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/page-animations.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom-style.css">
+<link rel="stylesheet" href="css/demo-switcher.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 </head>
 <body>
 <div class="page-wrapper toggled">
@@ -57,7 +53,7 @@
             (path property is set to all nav nodes)
         -->
 
-        <a href="${pageContext.request.contextPath}/student">
+        <a href="/index.html">
             <i class="fa fa-home"></i>
             <span>Homepage</span>
         </a>
@@ -78,7 +74,7 @@
             (path property is set to all nav nodes)
         -->
 
-        <a href="${pageContext.request.contextPath }/student?method=lessons">
+        <a href="/Lessons.html">
             <i class="fa fa-book"></i>
             <span>Lessons</span>
         </a>
@@ -99,7 +95,7 @@
             (path property is set to all nav nodes)
         -->
 
-        <a href="Exams.html">
+        <a href="/Exams.html">
             <i class="fa fa-book-open"></i>
             <span>Exams</span>
         </a>
@@ -109,7 +105,7 @@
 
           
             <li>
-               <a href="${pageContext.request.contextPath }/logout">
+              <a href="index.html?page=1#honors">
                 <i class="fas fa-sign-out-alt"></i>
                 <!--<i class="fa fa-sign"></i>-->
                 <span>Log Out</span>
@@ -150,39 +146,20 @@
   <main class="page-holder" data-animation="54">
     
    <div class="pages ay-spinner2" data-animation="54">
-      <div id="ap-Lessons.html" class="page ay-current" data-pos="Lessons.html">
-        
- <section class="color-1 ss-style-doublediagonal" >
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <h1 class="page-title"><%out.println(session.getAttribute("user")); %></h1>
-      <h2 class="page-item">Lessons</h2>
-    </div>
-  </div>
-</section>
-<section class="color-11 ss-style-doublediagonal" >
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-        <div class="container-fluid">
-            <div class="headings">
-              <a>Lesson</a>
-              <a>Role</a>
-            </div><br><br>
-            
-            <div class="listallco">
-              <div class="allcourse">
-              <c:forEach items="${registeredLessons }" var="item" varStatus="counter">
-                <div id="view1">
-						<a href="${pageContext.request.contextPath}/student?method=learnlesson&lid=${item.lid }">${item.lname } </a>
-						<a>${item.role }</a>
-                </div><br>
-              </c:forEach>
-              </div>
-            </div><br><br><br><br>
+      <div id="ap-Exams.html" class="page ay-current" data-pos="/Exams.html">
+        <section class="color-2 ss-style-triangles" >
+    <div class="section-container stu-grid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-left">
+                    <h3>Exams</h3>
+                </div>
+            </div>
         </div>
     </div>
-  </div>
 </section>
+
+
 
       </div>
     </div>
@@ -207,7 +184,7 @@
           </div>
 
           <div class="col-12 col-md-4 mt-4 mt-md-0 text-center text-md-right">
-            Â© 2019 Tian. All Rights Reserved
+            © 2019 Tian. All Rights Reserved
           </div>
         </div>
       </div>
@@ -316,8 +293,8 @@
         restartOnPushState: false
     };</script>
 <script type="text/javascript" src="js/bundle.js"></script>
-<!-- <script type="text/javascript" src="js/ay-pages.js"></script> -->
+<script type="text/javascript" src="js/ay-pages.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<!-- <script type="text/javascript" src="js/demo-switcher.js"></script> -->
+<script type="text/javascript" src="js/demo-switcher.js"></script>
 </body>
 </html>
